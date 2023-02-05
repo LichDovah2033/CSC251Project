@@ -4,10 +4,10 @@ public class Policy
 {
    //fields = atrributes of the policy
    
-   // pro = provider, ph = policy holder, SS = Smoker Status
+   // pro = provider, ph = policy holder, SS = Smoker Status, pol = policy
    
    private String proName;
-   private int proNumber;
+   private int polNumber;
    private String ph_first;
    private String ph_last;
    private int ph_age;
@@ -27,7 +27,7 @@ public class Policy
    public Policy()
    {
       proName = "Insura";
-      proNumber = 1;
+      polNumber = 1;
       ph_first = "D";
       ph_last = "N";
       ph_age = 1;
@@ -40,7 +40,7 @@ public class Policy
    argument constructor
    
    @param name the provider name
-   @param num the provider number
+   @param num the policy number
    @param first the holder's first name
    @param last the holder's last name
    @param age the holders age
@@ -51,7 +51,7 @@ public class Policy
    public Policy(String name, int num, String first, String last, int age, String bigSmoke, double inch, double lbs)
    {
       proName = name;
-      proNumber = num;
+      polNumber = num;
       ph_first = first;
       ph_last = last;
       ph_age = age;
@@ -73,9 +73,9 @@ public class Policy
    }
    
    //@param num is provider number
-   public void setproNumber(int num)
+   public void setpolNumber(int num)
    {
-      proNumber = num;
+      polNumber = num;
    }
    
    //@param first is holder first name
@@ -131,9 +131,9 @@ public class Policy
       return proName;
    }
    
-   public int getproNumber()
+   public int getpolNumber()
    {
-      return proNumber;
+      return polNumber;
    }
    
    public String getph_first()
