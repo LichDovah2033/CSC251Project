@@ -125,7 +125,7 @@ public class Policy
    */
    
    
-   //@param #Igiveup #Wasitevenneccesary
+   //@param
    public String getproName()
    {
       return proName;
@@ -189,7 +189,7 @@ public class Policy
       
       String smoke = "smoker";
       
-      if (policyHolderSS.equals(smoke)) // statement for smoke status fee
+      if (policyHolderSS.equals(smoke)) // statement for smoker status fee
       {
          totalPrice = totalPrice + 100.0;
       }
