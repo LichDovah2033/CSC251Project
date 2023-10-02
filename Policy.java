@@ -25,6 +25,19 @@ public class Policy
    }
    
    //main constructor
+   /*
+      @param number is the policy number
+      @param proName is the provider name
+      @param firstName is the holder's first name
+      @param lastName is the holder's last name
+      @param age is the holder's age
+      @param bigSmoke is the holder's smoker status and a gta meme refernce
+      @param height is the holder's height
+      @param weight is the holder's weight
+      
+      (I think this is the correct way to do this
+   
+   */
    public Policy(int number, String proName, String firstName, String lastName, int age, boolean bigSmoke, double height, double weight) {
       policyNumber = number;
       providerName = proName;
@@ -38,28 +51,37 @@ public class Policy
    
    //getters start
    
+   //@return returns Policy Number
    public int getPolicyNumber() {
       return policyNumber;
    }
    
+   //@return returns Provider name
    public String getProviderName() {
       return providerName;
    }
    
+   //@return returns holder's first name
    public String getHolderFirstName() {
       return holderFirstName;
    }
    
+   //@return returns holder's last name
    public String getHolderLastName() {
       return holderLastName;
    }
    
+   //@return returns holder's Age
    public int getHolderAge() {
       return holderAge;
    }
    
+   //@retrun returns holder's Smoke Status as a boolean
+   public boolean getSmokeTF() {
+      return holderSmokeStatus;
+   }
    
-   // gets smoke status as a string
+   //@return returns smoke status as a string
    public String getHolderSmokeStatus() {
       String smokeString;
       
