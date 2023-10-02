@@ -34,9 +34,6 @@ public class Policy
       @param bigSmoke is the holder's smoker status and a gta meme refernce
       @param height is the holder's height
       @param weight is the holder's weight
-      
-      (I think this is the correct way to do this
-   
    */
    public Policy(int number, String proName, String firstName, String lastName, int age, boolean bigSmoke, double height, double weight) {
       policyNumber = number;
