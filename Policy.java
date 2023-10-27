@@ -5,22 +5,26 @@ public class Policy
    //fields
    private int policyNumber;
    private String providerName;
+   private PolicyHolder person;
    
    
    //no arg constructor, sets default values
    public Policy() {
       policyNumber = 1;
       providerName = "Ryujin";
+      person = new PolicyHolder();
    }
+   
    
    //main constructor
    /*
       @param number is the policy number
       @param proName is the provider name
    */
-   public Policy(int number, String proName) {
+   public Policy(int number, String proName, PolicyHolder holder) {
       policyNumber = number;
       providerName = proName;
+      person = new PolicyHolder(holder);
    }
    
    //getters start
@@ -48,16 +52,16 @@ public class Policy
       final double BMI_LIM = 35.0;
       double bmiFee;
       
-      if (holderAge > AGE_FEE_LIM) {
+      if (person.getHolderAge() > AGE_FEE_LIM) {
          policyCost = policyCost + AGE_FEE;
       }
       
-      if (holderSmokeStatus) {
+      if (person.getSmokeTF()) {
          policyCost = policyCost + SMOKE_FEE;
       }
       
       
-      if(getBMI() > BMI_LIM) {
+      if(person.getBMI() > BMI_LIM) {
          bmiFee = (getBMI() - BMI_LIM) * 20.0; // hard coding the 20 cause it's easier
          policyCost = policyCost + bmiFee;
          
