@@ -3,7 +3,7 @@ public class PolicyHolder
    private String holderFirstName;
    private String holderLastName;
    private int holderAge;
-   private boolean holderSmokeStatus;
+   private String holderSmokeStatus;
    private double holderHeight;
    private double holderWeight;
    
@@ -12,7 +12,7 @@ public class PolicyHolder
       holderFirstName = "unkown";
       holderLastName = "unkown";
       holderAge = 25;
-      holderSmokeStatus = false;
+      holderSmokeStatus = "non-smoker";
       holderHeight = 72.00;
       holderWeight = 100.00;
    }
@@ -26,13 +26,23 @@ public class PolicyHolder
       @param height is the holder's height
       @param weight is the holder's weight
    */
-   public PolicyHolder(String firstName, String lastName, int age, boolean bigSmoke, double height, double weight) {
+   public PolicyHolder(String firstName, String lastName, int age, String bigSmoke, double height, double weight) {
       holderFirstName = firstName;
       holderLastName = lastName;
       holderAge = age;
       holderSmokeStatus = bigSmoke;
       holderHeight = height;
       holderWeight = weight;
+   }
+   
+   //copy constructor
+   public PolicyHolder(PolicyHolder toCopy) {
+      holderFirstName = toCopy.getHolderFirstName();
+      holderLastName = toCopy.getHolderLastName();
+      holderAge = toCopy.getHolderAge();
+      holderSmokeStatus = getHolderSmokeStatus();
+      holderHeight = toCopy.getHolderHeight();
+      holderWeight = toCopy.getHolderWeight();
    }
    
    
@@ -51,22 +61,23 @@ public class PolicyHolder
       return holderAge;
    }
    
-   //@retrun returns holder's Smoke Status as a boolean
-   public boolean getSmokeTF() {
+   //@retrun returns holder's Smoke Status
+   public String getHolderSmokeStatus() {
       return holderSmokeStatus;
    }
    
-   //@return returns smoke status as a string
-   public String getHolderSmokeStatus() {
-      String smokeString;
+   //@return returns smoke status as a boolean
+   public boolean getSmokeTF() {
+      boolean smokeTF;
+      final String SMOKE = "smoker";
       
-      if (holderSmokeStatus) {
-         smokeString = "smoker";
+      if (holderSmokeStatus.equals(SMOKE)) {
+         smokeTF = true;
       } else {
-         smokeString = "non-smoker";
+         smokeTF = false;
       }
       
-      return smokeString;
+      return smokeTF;
    }
    
    public double getHolderHeight() {
