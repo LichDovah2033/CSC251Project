@@ -3,7 +3,7 @@ public class PolicyHolder
    private String holderFirstName;
    private String holderLastName;
    private int holderAge;
-   private String holderSmokeStatus;
+   private boolean holderSmokeStatus;
    private double holderHeight;
    private double holderWeight;
    
@@ -12,7 +12,7 @@ public class PolicyHolder
       holderFirstName = "unkown";
       holderLastName = "unkown";
       holderAge = 25;
-      holderSmokeStatus = "non-smoker";
+      holderSmokeStatus = false;
       holderHeight = 72.00;
       holderWeight = 100.00;
    }
@@ -26,7 +26,7 @@ public class PolicyHolder
       @param height is the holder's height
       @param weight is the holder's weight
    */
-   public PolicyHolder(String firstName, String lastName, int age, String bigSmoke, double height, double weight) {
+   public PolicyHolder(String firstName, String lastName, int age, boolean bigSmoke, double height, double weight) {
       holderFirstName = firstName;
       holderLastName = lastName;
       holderAge = age;
@@ -40,7 +40,7 @@ public class PolicyHolder
       holderFirstName = toCopy.getHolderFirstName();
       holderLastName = toCopy.getHolderLastName();
       holderAge = toCopy.getHolderAge();
-      holderSmokeStatus = getHolderSmokeStatus();
+      holderSmokeStatus = toCopy.getSmokeTF();
       holderHeight = toCopy.getHolderHeight();
       holderWeight = toCopy.getHolderWeight();
    }
@@ -62,22 +62,22 @@ public class PolicyHolder
    }
    
    //@retrun returns holder's Smoke Status
-   public String getHolderSmokeStatus() {
+   public boolean getSmokeTF() {
       return holderSmokeStatus;
    }
    
-   //@return returns smoke status as a boolean
-   public boolean getSmokeTF() {
-      boolean smokeTF;
+   public String getHolderSmokeStatus() {
       final String SMOKE = "smoker";
+      final String NON_SMOKE = "non-smoker";
+      String smoke;
       
-      if (holderSmokeStatus.equals(SMOKE)) {
-         smokeTF = true;
+      if(getSmokeTF()){
+         smoke = SMOKE;
       } else {
-         smokeTF = false;
+         smoke = NON_SMOKE;
       }
       
-      return smokeTF;
+      return smoke;
    }
    
    public double getHolderHeight() {
@@ -97,6 +97,22 @@ public class PolicyHolder
       BMI = (CALC_NUM * holderWeight) / (holderHeight * holderHeight);
       
       return BMI;
+   
+   }
+   
+   //toString method
+   public String toString(){
+      String print;
+      
+      //There is no way for me to make this easy to read, but I tried.
+      print = String.format("\nPolicyholder's First Name: %s\n" + 
+                            "Policyholder's Last Name: %s\n" + 
+                            "Policyholder's Age: %d\n" + 
+                            "Policyholder's Smoking Status (Y/N): %s\n" + 
+                            "Policyholder's Height: %.1f\n" + 
+                            "Policyholder's Weight: %.1f\n" + 
+                            "Policyholder's BMI: %.2f" , getHolderFirstName() , getHolderLastName() , getHolderAge() , getHolderSmokeStatus() , getHolderHeight() , getHolderWeight() , getBMI());
+      return print;  
    
    }
 
