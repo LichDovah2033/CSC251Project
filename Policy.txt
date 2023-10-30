@@ -1,8 +1,8 @@
 1234
 Arasaka
-Drake
-Norman
-21
-non-smoker
+Drakos
+Stormcrown
+2100
+smoker
 72.0
-200.0
+210.0
