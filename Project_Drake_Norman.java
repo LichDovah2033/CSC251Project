@@ -16,11 +16,11 @@ public class Project_Drake_Norman
       boolean smokeTF;
       String smokeInput;
       final String SMOKE = "smoker";
-      final String NO_SMOKE = "non-smoker";
       double height;
       double weight;
       int numSmoke = 0;
       int numNonSmoke = 0;
+      String smokeTest;
       
       ArrayList<Policy> policyList = new ArrayList<Policy>();
       
@@ -36,44 +36,42 @@ public class Project_Drake_Norman
          age = fileInput.nextInt();
          fileInput.nextLine();
          smokeInput = fileInput.nextLine();
-         
-         if(smokeInput.equals(SMOKE)) {
-         smokeTF = true;
-         } else if (smokeInput.equals(NO_SMOKE)) {
-         smokeTF = false;
-         } else {
-         smokeTF = false;
-         }
          height = fileInput.nextDouble();
          weight = fileInput.nextDouble();
          
-         Policy policy = new Policy(number, proName, firstName, lastName, age, smokeTF, height, weight);
-         policyList.add(policy);
+         if(smokeInput.equals(SMOKE)){
+            smokeTF = true;
+         } else { 
+            smokeTF = false;
+         }
          
-         if(smokeTF) {
+         
+         
+         PolicyHolder holder = new PolicyHolder(firstName, lastName, age, smokeTF, height, weight);
+         
+         
+         if(holder.getSmokeTF()) {
             numSmoke++;
          } else {
             numNonSmoke++;
          }
          
+         Policy policy = new Policy(number, proName, holder);
+         policyList.add(policy);
+         
       }
       
       for (int index = 0; index < policyList.size(); index++) {
          Policy iPolicy = policyList.get(index);
-         System.out.println("\nPolicy Number: " + iPolicy.getPolicyNumber());
-         System.out.println("Provider Name: " + iPolicy.getProviderName());
-         System.out.println("Policyholder's First Name: " + iPolicy.getHolderFirstName());
-         System.out.println("Policyholder's Last Name: " + iPolicy.getHolderLastName());
-         System.out.println("Policyholder's Age: " + iPolicy.getHolderAge());
-         System.out.println("Policyholder's Smoking Status: " + iPolicy.getHolderSmokeStatus());
-         System.out.printf("Policyholder's Height: %.2f\n" , iPolicy.getHolderHeight());
-         System.out.printf("Policyholder's Weight: %.2f\n" , iPolicy.getHolderWeight());
-         System.out.printf("Policyholder's BMI: %.2f\n" , iPolicy.getBMI());
-         System.out.printf("Policy Price: $%.2f\n" , iPolicy.getCost());
+         System.out.print(iPolicy.toString());
       }
       
-      System.out.println("\nThe number of policies with a smoker is: " + numSmoke);
+      Policy display = policyList.get(policyList.size() - 1);
+      
+      System.out.println("\nThere were " + display.numPolicies +  " Policy objects created.");
+      System.out.println("The number of policies with a smoker is: " + numSmoke);
       System.out.println("The number of policies with a non-smoker is: " + numNonSmoke);
+      
          
    }
 
